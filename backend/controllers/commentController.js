@@ -13,6 +13,9 @@ const getComments = asyncHandler(async (req, res) => {
 
 const addComment = asyncHandler(async (req, res) => {
 	const { author, textContent, mediaContentURL, _id } = req.body;
+	if (author != req.user.id) {
+		throw new Error('Unauthorized comment creation');
+	}
 	const comment = await Comment.create({
 		_id,
 		author,
@@ -46,6 +49,10 @@ const deleteComment = asyncHandler(async (req, res) => {
 	const { id } = req.params;
 	const comment = await Comment.findById(id);
 
+	if (comment.author != req.user.id) {
+		throw new Error('Unauthorized comment deletion');
+	}
+
 	if (!comment) {
 		res.status(400);
 		throw new Error("Comment doesn't exist");
@@ -65,6 +72,10 @@ const updateComment = asyncHandler(async (req, res) => {
 	const { textContent, mediaContentURL, likes, comments } = req.body;
 
 	const commentExists = await Comment.findById(id);
+
+	if (commentExists.author != req.user.id) {
+		throw new Error('Unauthorized comment updation');
+	}
 
 	if (!commentExists) {
 		res.status(404);

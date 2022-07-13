@@ -10,7 +10,6 @@ const commentRouter = require('./routes/commentRoutes');
 const messageRouter = require('./routes/messageRoutes');
 const connectDB = require('./config/db');
 const { errorHandler } = require('./middleware/errorMiddleware');
-
 connectDB();
 
 app.use(express.json());

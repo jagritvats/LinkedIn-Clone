@@ -19,7 +19,9 @@ const createPost = asyncHandler(async (req, res) => {
 		throw new Error('Please provide valid author id');
 	}
 
-	// if(author!==req.user.id) {throw new Error('Unauthorized post creation')}
+	if (author != req.user.id) {
+		throw new Error('Unauthorized post creation');
+	}
 
 	const post = await Post.create({
 		author,
@@ -53,7 +55,9 @@ const deletePost = asyncHandler(async (req, res) => {
 
 	const post = Post.findById(id);
 
-	// if(post.author !== req.user.id) {throw new Error('Unauthorized deleted operation')}
+	if (post.author != req.user.id) {
+		throw new Error('Unauthorized deleted operation');
+	}
 
 	if (!post) {
 		res.status(404);
@@ -73,11 +77,13 @@ const updatePost = asyncHandler(async (req, res) => {
 	const { textContent, mediaContentURL, likes, comments } = req.body;
 
 	const postExists = await Post.findById(id); //post id
-
-	// if(postExists.author !== req.user.id){throw new Error('User not authorized to update this post')}
 	if (!postExists) {
 		res.status(404);
 		throw new Error("The post to update doesn't exist");
+	}
+
+	if (postExists.author != req.user.id) {
+		throw new Error('User not authorized to update this post');
 	}
 
 	const post = await Post.findByIdAndUpdate(

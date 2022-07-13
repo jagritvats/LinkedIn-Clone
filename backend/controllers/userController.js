@@ -10,13 +10,14 @@ const getUsers = asyncHandler(async (req, res) => {
 });
 
 // might need custom error handler for checking unique username etc.
-const registerUser = asyncHandler(async (req, res) => {
+const registerUser = async (req, res) => {
 	const { fname, lname, username, email, password, mobile, bio, role } =
 		req.body;
 
 	if (!fname || !username || !email || !password) {
-		res.status(400);
-		throw new Error('Enter the required details for registration');
+		res.status(400).json({
+			message: 'Enter all the required details for registration',
+		});
 	}
 
 	// bcrypt
@@ -40,7 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
 		success: true,
 		token: await generateToken(user._id),
 	});
-});
+};
 
 const loginUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body;

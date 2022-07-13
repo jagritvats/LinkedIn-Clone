@@ -4,11 +4,16 @@
 	"description": "MERN stack clone of LinkedIN",
 	"main": "server.js",
 	"scripts": {
-		"dev": "nodemon backend/server.js"
+		"server": "nodemon backend/server.js",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"author": "Jagrit",
 	"license": "ISC",
 	"dependencies": {
+		"@emotion/react": "^11.9.3",
+		"@emotion/styled": "^11.9.3",
+		"@mui/material": "^5.9.0",
 		"bcryptjs": "^2.4.3",
 		"dotenv": "^16.0.1",
 		"express": "^4.18.1",
@@ -17,6 +22,7 @@
 		"mongoose": "^6.4.2"
 	},
 	"devDependencies": {
+		"concurrently": "^7.2.2",
 		"nodemon": "^2.0.18"
 	}
 }
