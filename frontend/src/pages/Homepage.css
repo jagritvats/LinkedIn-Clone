@@ -1,0 +1,45 @@
+
+
+/* Main */
+
+.home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--primary-col);
+}
+
+.home main {
+    flex-grow: 1;
+    padding: 0 3em;
+}
+/* Asides */
+aside{
+    font-size: 0.9em;
+}
+
+aside > div{
+    background-color: white;
+    border-radius: 1em;
+    margin: 1em;
+    padding: 1em;
+    
+}
+
+.recommendations__group{
+    display: flex;
+    flex-direction: column;
+}
+
+/*  */
+h5{
+    color: gray
+}
+
+/* Messaging */
+
+.messagingWindow {
+    position: fixed;
+    bottom:0px;
+    right: 1em;
+}

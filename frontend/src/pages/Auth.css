@@ -1,0 +1,58 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height: 100%;
+    background-color: #f3f2ef;
+}
+
+.auth h2{
+    font-weight: 500;
+    margin: 0.4em;
+}
+
+.auth form {
+    color: gray;
+    min-width: 40%;
+    text-align: center;
+}
+
+
+.auth form p:last-child{
+    color: black;
+}
+
+.auth a {
+    color: blue;
+}
+
+form{
+    background-color: white;
+    border-radius: 0.6em;
+    margin: 1em;
+    padding: 1em 0.4em;
+}
+
+form >  * {
+    margin-top: 0.4em;
+}
+
+/* Form Item Custom Styling */
+
+.form__item {
+    padding: 0.4em 1em;
+    min-width: 80%;
+}
+
+.form__item label {
+    display:block;
+    margin-bottom: 0.1em;
+}
+
+.form__item input{
+    width: 80%;
+    padding: 0.4em 1em;
+}
+
+/* Try grid */

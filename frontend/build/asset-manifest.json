@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83ef7ba0.css",
+    "main.js": "/static/js/main.211ddbc3.js",
+    "static/media/heroImg.svg": "/static/media/heroImg.5fab134b30015f482420fb159638d24f.svg",
+    "static/media/home.svg": "/static/media/home.e947a03817571f95754de49271515bcb.svg",
+    "static/media/work.svg": "/static/media/work.9b99a8374366b63c16854fe2159a517a.svg",
+    "static/media/network.svg": "/static/media/network.c9d1ec54ca595a839f4fa4daa38ac213.svg",
+    "static/media/notifications.svg": "/static/media/notifications.2fce7fe436b83d7bd8b814a7cfb57109.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.f2f7d420f8ec14109e65abad03b5f32c.svg",
+    "index.html": "/index.html",
+    "static/media/jobs.svg": "/static/media/jobs.5dc03f3e02e07694053f1eb01a8b595f.svg",
+    "static/media/profile.svg": "/static/media/profile.b5a93b75482006a021e0945870345ea5.svg",
+    "static/media/messaging.svg": "/static/media/messaging.6bfadd14417e349091378934b5dae592.svg",
+    "main.83ef7ba0.css.map": "/static/css/main.83ef7ba0.css.map",
+    "main.211ddbc3.js.map": "/static/js/main.211ddbc3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83ef7ba0.css",
+    "static/js/main.211ddbc3.js"
+  ]
+}

@@ -1,0 +1,42 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* justify-content: space-between;
+    align-items: center; */
+}
+
+/* Containers */
+/* For spacing and colors */
+
+.rootContainer{
+    width: 100%;
+}
+.navbar__container{
+    background-color: var(--secondary-col);
+}
+.app__container{
+    background-color: var(--primary-col);
+    flex-grow: 1;/* to take the remaining vertical space */
+}
+.footer__container{
+    background-color: var(--secondary-col);
+}
+
+.navbar , .home , .footer{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.navbar {
+    min-height: 50px;
+}
+
+.home{
+    height: 100%;
+    flex-grow: 1;
+}
+
+.error {
+    color: red !important;
+}
