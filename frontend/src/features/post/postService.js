@@ -20,9 +20,9 @@ const addPost = async (post, token) => {
 	if (res.status === 201) {
 		console.log(res.data);
 		// localStorage.setItem('posts', JSON.stringify(res.data)); // temporary
-		return res.data;
+		return res.data.post;
 	}
-	throw new Error('Error registering');
+	throw new Error('Error adding post');
 };
 
 const likePost = async (postId, userId, token) => {
@@ -36,6 +36,31 @@ const likePost = async (postId, userId, token) => {
 		const res = await axios.post(
 			`${API_URL}${postId}/likes`,
 			{ userId },
+			config
+		);
+
+		console.log('liked?');
+
+		if (res.status === 200) {
+			return res.data;
+		}
+	} catch (err) {
+		console.log(err);
+	}
+	throw new Error('Error liking the post');
+};
+
+const editPost = async (postId, userId, textContent, token) => {
+	const config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	};
+	console.log('edit post');
+	try {
+		const res = await axios.patch(
+			`${API_URL}${postId}`,
+			{ userId, textContent },
 			config
 		);
 
@@ -88,6 +113,7 @@ export const postService = {
 	getPosts,
 	addPost,
 	likePost,
+	editPost,
 	unLikePost,
 	deletePost,
 	resetPosts,

@@ -104,7 +104,7 @@ const authSlice = createSlice({
 			})
 			.addCase(logout.fulfilled, (state, action) => {
 				state.isError = false;
-				state.isSuccess = true;
+				state.isSuccess = false;
 				state.message = '';
 				state.user = null;
 				state.isLoading = false;

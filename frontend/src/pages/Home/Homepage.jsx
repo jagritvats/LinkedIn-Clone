@@ -1,133 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getPosts, likePost, unlikePost } from '../features/post/postSlice';
 import './Homepage.css';
-import StaticHomepage from './StaticHomepage';
-
-const AddPost = () => {
-	return (
-		<form className="add__post">
-			<div className="main__content">
-				<div className="profile__img">
-					<img src="" alt="" />
-				</div>
-				<textarea
-					name="postcontent"
-					id="postcontent"
-					cols="80"
-					rows="2"
-				></textarea>
-				<button type="submit">Post</button>
-			</div>
-			<ul className="multimedia__selector">
-				<li>
-					<img src="" alt="" />
-					<span>Photo</span>
-				</li>
-				<li>
-					<img src="" alt="" />
-					<span>Video</span>
-				</li>
-				<li>
-					<img src="" alt="" />
-					<span>Event</span>
-				</li>
-				<li>
-					<img src="" alt="" />
-					<span>Write Article</span>
-				</li>
-			</ul>
-		</form>
-	);
-};
-
-const PostsDisplay = () => {
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(getPosts());
-	}, []);
-	const posts = useSelector((state) => state.post);
-	const user = useSelector((state) => state.auth.user.user);
-	console.log(posts);
-	if (!posts) {
-		return <>No Posts</>;
-	}
-	return (
-		<ul className="posts__container">
-			<li>
-				<h2>Post</h2>
-				<p>Time posted</p>
-				<p>Author</p>
-				<p>Post content</p>
-			</li>
-			{posts.isLoading ? (
-				'Loading'
-			) : (
-				<>
-					<>
-						{/* {posts.posts.map((post) => {
-						return (
-							<div className="post">
-								<h3>{post.author}</h3>
-								<p>{post.textContent}</p>
-								<div className="post__actions">
-									<button
-										className="like"
-										onClick={() => {
-											console.log(post.likes, user._id);
-
-											if (
-												post.likes.includes(
-													String(user._id)
-												)
-											) {
-												dispatch(
-													unlikePost(
-														post._id,
-														user._id
-													)
-												);
-											} else {
-												dispatch(
-													likePost({
-														postId: post._id,
-														userId: user._id,
-													})
-												);
-											}
-										}}
-									>
-										Like
-										{post.likes.length}
-									</button>
-								</div>
-							</div>
-						);
-					})} */}
-					</>
-
-					<>
-						<div className="post">
-							<h3>Jagrit</h3>
-							<p>Hi guys, I'm new to linked clone</p>
-							<div className="post__actions">
-								<button
-									className="like"
-									onClick={() => {
-										console.log('dummy like');
-									}}
-								>
-									Like 0
-								</button>
-							</div>
-						</div>
-					</>
-				</>
-			)}
-		</ul>
-	);
-};
+import StaticHomepage from '../StaticHomepage';
+import AddPost from './AddPost';
+import PostsDisplay from './PostsDisplay';
+import DefPic from '../../media/images/defpic.jpg';
 
 function Homepage() {
 	const auth = useSelector((state) => state.auth);
@@ -142,10 +19,15 @@ function Homepage() {
 			<aside>
 				<div className="profile">
 					<h2>Your Profile</h2>
-
+					<div className="profile__img">
+						<img src={DefPic} alt={`${auth.user.user.username}`} />
+					</div>
 					<h2>
 						{auth.user.user.fname} {auth.user.user.lname}
 					</h2>
+					<h3 style={{ color: 'gray', cursor: 'pointer' }}>
+						@{auth.user.user.username}
+					</h3>
 					<p className="bio">
 						{auth.user.user.bio
 							? auth.user.user.bio
@@ -171,9 +53,7 @@ function Homepage() {
 						<h5>Access exculsive tools &amp; insights</h5>
 						<div>
 							<i></i>
-							<Link to="/premium">
-								Get Hired Faster, Try Premium Free
-							</Link>
+							<Link to="/premium">Try Premium for Free</Link>
 						</div>
 					</div>
 
@@ -198,7 +78,6 @@ function Homepage() {
 
 			<main>
 				<AddPost />
-				<hr />
 				<PostsDisplay />
 			</main>
 

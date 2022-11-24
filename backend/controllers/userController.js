@@ -84,6 +84,23 @@ const loginUser = asyncHandler(async (req, res) => {
 	});
 });
 
+const getUser = asyncHandler(async (req, res) => {
+	const { id } = req.params;
+
+	let user = await User.findById(id).select(
+		'fname email role posts comments'
+	);
+	if (!user) {
+		res.status(404);
+		throw new Error("The post doesn't exist");
+	}
+
+	res.status(200).json({
+		user,
+		success: true,
+	});
+});
+
 // update user implementation
 
 const generateToken = async (id) => {
@@ -95,4 +112,5 @@ module.exports = {
 	getUsers,
 	registerUser,
 	loginUser,
+	getUser,
 };

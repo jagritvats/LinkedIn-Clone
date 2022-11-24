@@ -1,0 +1,51 @@
+.post{
+    padding: 0.6em 1em;
+    margin: 0.4em;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:0.4em;
+    padding: 1em 2em; 
+}
+
+.post__actions{
+    display: flex;
+    justify-content: space-between;
+}
+.post__actions button{
+    padding: 0.6em 1em;
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    box-shadow: 1px 1px 1px 1px lightgray;
+    border-radius: 1em;
+}
+
+.post_profile_sum{
+    font-size: 0.8em;
+}
+
+.post_profile_sum p{
+    color: rgb(80, 80, 80);
+}
+
+.profileSummary{
+    display: flex;
+    align-items: center;
+    gap: 1em;   
+}
+
+.likeBtn:hover{
+    background-color: rgb(6, 129, 244);
+    color: white;
+}
+
+.deleteBtn{
+    color: red;
+}
+
+.deleteBtn:hover{
+    color: white;
+    background-color: red;
+}

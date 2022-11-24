@@ -2,8 +2,7 @@
     display: flex;
     justify-content: space-around;
     width: 100vw;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding: 1em 0em;
     color: black;
     background-color: white;
 }

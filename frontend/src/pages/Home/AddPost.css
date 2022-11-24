@@ -1,0 +1,53 @@
+.main__content{
+    display: flex;
+    gap: 1em;
+}
+
+.profile__img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.profile__img img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.post__content__txt{
+    display: flex;
+    justify-content: space-between;
+}
+
+.post__content__txt p, .post__content__txt input{
+    width: 90%;
+}
+
+.multimedia__selector{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.multimedia__selector li{
+    list-style-type: none;
+    margin: 0.1em;
+    cursor: pointer;
+    padding: 0.4em;
+    border-radius: 4px;
+    
+}
+
+.multimedia__selector li:hover{
+    background-color: rgba(128, 128, 128, 0.24);
+}
+
+.postBtn{
+    background-color: #003ace;
+    color: white;
+    cursor: pointer;
+}
+
+.postBtn:hover{
+
+    background-color: #004182;
+}

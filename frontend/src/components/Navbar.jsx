@@ -101,7 +101,10 @@ function Navbar() {
 						</li>
 
 						<li>
-							<button onClick={() => dispatch(logout())}>
+							<button
+								className="btn deleteBtn"
+								onClick={() => dispatch(logout())}
+							>
 								Logout
 							</button>
 						</li>

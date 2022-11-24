@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 
 //
 const getPosts = asyncHandler(async (req, res) => {
-	const posts = await Post.find({}); // return all the users, not really a required feature, only for testing
+	const posts = await Post.find({}).sort({ createdAt: -1 }); // return all the posts, not really a required feature, only for testing
 	res.json(posts);
 });
 
@@ -54,9 +54,10 @@ const getPost = asyncHandler(async (req, res) => {
 const deletePost = asyncHandler(async (req, res) => {
 	const { id } = req.params;
 
-	const post = Post.findById(id);
-
+	const post = await Post.findById(id);
+	console.log(post, post.author, req.user);
 	if (post.author != req.user.id) {
+		res.status(401);
 		throw new Error('Unauthorized deleted operation');
 	}
 
@@ -75,7 +76,7 @@ const deletePost = asyncHandler(async (req, res) => {
 
 // NOTE : DECOUPLE REQUEST/RES FROM DB LOGIC -> models -- later
 
-// not public
+// not public, not secure
 const updatePost = asyncHandler(async (req, res) => {
 	const { id } = req.params;
 	const { textContent, mediaContentURL, likes, comments } = req.body;
@@ -97,6 +98,40 @@ const updatePost = asyncHandler(async (req, res) => {
 			mediaContentURL,
 			likes,
 			comments,
+		},
+		{ new: true } // to override default behaviour and return updated post data
+	);
+
+	res.json({
+		post,
+		success: true,
+	});
+});
+
+// edit post, limited version of above
+const editPost = asyncHandler(async (req, res) => {
+	const { id } = req.params;
+	// for now
+	const { textContent } = req.body;
+
+	if (!textContent) {
+		throw new Error('No new content provided');
+	}
+
+	const postExists = await Post.findById(id); //post id
+	if (!postExists) {
+		res.status(404);
+		throw new Error("The post to edit doesn't exist");
+	}
+
+	if (postExists.author != req.user.id) {
+		throw new Error('User not authorized to edit this post');
+	}
+
+	const post = await Post.findByIdAndUpdate(
+		id,
+		{
+			textContent,
 		},
 		{ new: true } // to override default behaviour and return updated post data
 	);
@@ -166,4 +201,5 @@ module.exports = {
 	updatePost,
 	likePost,
 	unLike,
+	editPost,
 };

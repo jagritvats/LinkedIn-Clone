@@ -6,9 +6,9 @@ const {
 	createPost,
 	getPost,
 	deletePost,
-	updatePost,
 	likePost,
 	unLike,
+	editPost,
 } = require('../controllers/postController');
 const protect = require('../middleware/authMiddleware');
 // getPostsForUID will be required too for personalized feed
@@ -25,7 +25,7 @@ router.route('/:id/likes').post(protect, likePost).delete(protect, unLike);
 router
 	.route('/:id')
 	.get(getPost) //no protection for now
-	.patch(protect, updatePost)
+	.patch(protect, editPost)
 	.delete(protect, deletePost);
 
 module.exports = router;

@@ -6,18 +6,30 @@
     align-items: center; */
 }
 
+/* General */
+
+
 /* Containers */
 /* For spacing and colors */
 
+button{
+    cursor: pointer;
+}
+
 .rootContainer{
-    width: 100%;
+    width: 100%;min-height: 100%;
+    flex-grow: 1;
+    /* display: flex; */
+
 }
 .navbar__container{
     background-color: var(--secondary-col);
 }
 .app__container{
+    
     background-color: var(--primary-col);
-    flex-grow: 1;/* to take the remaining vertical space */
+    flex-grow: 1;
+    /* to take the remaining vertical space */
 }
 .footer__container{
     background-color: var(--secondary-col);
@@ -33,7 +45,6 @@
 }
 
 .home{
-    height: 100%;
     flex-grow: 1;
 }
 

@@ -1,0 +1,100 @@
+
+
+/* Main */
+
+.home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--primary-col);
+}
+
+.home main {
+    flex-grow: 1;
+    padding: 0 1em;
+    width: 60%;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.profile > *{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.profile__stats{
+    gap:0.1em;
+    cursor: pointer;
+}
+
+.profile__stats>div{
+    padding: 0.2em;
+}
+
+.profile__stats>div:hover{
+    background-color: rgb(225, 225, 225);
+}
+
+.profile__stats > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile__stats span{
+    color: blue;
+}
+
+.recommendations__group h4{
+    font-size: 1.2em;
+    margin: 0.4em 0;
+}
+
+.recommendations__group{
+    display: flex;
+    gap:0.3em;
+}
+
+.newsList{
+    padding:1em;
+}
+
+/* Asides */
+aside{
+    font-size: 0.9em;
+}
+
+aside > div{
+    background-color: white;
+    border-radius: 1em;
+    margin: 1em;
+    padding: 1em;
+    
+}
+
+.sidebar__header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.recommendations__group{
+    display: flex;
+    flex-direction: column;
+}
+
+/*  */
+h5{
+    color: gray
+}
+
+/* Messaging */
+
+.messagingWindow {
+    position: fixed;
+    bottom:0px;
+    right: 1em;
+}

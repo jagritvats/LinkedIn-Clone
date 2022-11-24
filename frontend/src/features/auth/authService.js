@@ -24,6 +24,14 @@ const login = async ({ email, password }) => {
 	throw new Error('Error logging in');
 };
 
+const getUser = async (uid) => {
+	const res = await axios.get(`${API_URL + uid}`);
+	if (res.status === 200) {
+		return res.data;
+	}
+	throw new Error('Error retrieving post user info');
+};
+
 const logout = async () => {
 	localStorage.removeItem('user');
 };
@@ -32,4 +40,5 @@ export const authService = {
 	register,
 	login,
 	logout,
+	getUser,
 };
